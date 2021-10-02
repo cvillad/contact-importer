@@ -31,6 +31,18 @@ RSpec.describe Contact, type: :model do
         contact.phone = '(+57) 300 123 4343'
         invalid_expectation(contact, 'phone')
       end
+
+      it 'is invalid with invalid credit card' do
+        contact.credit_card = '4242424242424241'
+        invalid_expectation(contact, 'credit_card')
+      end
+
+      it 'saves credit card values' do
+        contact.save
+        expect(contact.franchise).to eq('Visa')
+        expect(contact.credit_card_last_4).to eq('4242')
+        expect(contact.credit_card).not_to eq('4242424242424242')
+      end
     end
     
     context 'when failed contact' do
@@ -57,6 +69,18 @@ RSpec.describe Contact, type: :model do
         expect(contact).to be_valid
         contact.phone = '(+57) 300 123 4343'
         expect(contact).to be_valid
+      end
+
+      it 'is valid with invalid credit card' do
+        contact.credit_card = '4242424242424241'
+        expect(contact).to be_valid
+      end
+
+      it 'save proper credit card values' do
+        contact.save
+        expect(contact.franchise).to eq('Invalid franchise')
+        expect(contact.credit_card_last_4).to be_nil
+        expect(contact.credit_card).not_to eq('4242424242424242')
       end
     end
   end
