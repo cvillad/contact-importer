@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :contact_file do
-    columns { "" }
-    user { nil }
+    columns { {  } }
+    association :user
   end
 end
