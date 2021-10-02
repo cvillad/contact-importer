@@ -1,12 +1,12 @@
 class Contact < ApplicationRecord
   require 'credit_card_validations/string'
 
-  belongs_to :contact_file
-
   PHONE_REGEX = /\A\(\+\d{2}\) \d{3}([- ])\d{3}\1\d{2}\1\d{2}\z/.freeze
   NAME_REGEX = /\A[a-zA-Z0-9 -]*\z/.freeze
 
   enum status: { succeeded: 0, failed: 1 }
+
+  belongs_to :contact_file
 
   validates :name, presence: true, format: { with: NAME_REGEX , multiline: true }, if: :succeeded?
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, if: :succeeded?

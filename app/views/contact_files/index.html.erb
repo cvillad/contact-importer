@@ -1,0 +1,11 @@
+<h1>User::ContactFiles#index</h1>
+<p>Find me in app/views/user/contact_files/index.html.erb</p>
+<%= form_for @contact_file do |form| %>
+  <%= form.file_field :file %>
+
+  <%= form.submit 'Upload' %>
+<% end %>
+<h3>Contact files</h1>
+<% @contact_files.each do |contact_file| %>
+  <%= contact_file.filename %>
+<% end %>

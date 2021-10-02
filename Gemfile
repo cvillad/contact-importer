@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # For credit cards
 gem 'credit_card_validations'
+# Validations for attached files
+gem 'active_storage_validations'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
