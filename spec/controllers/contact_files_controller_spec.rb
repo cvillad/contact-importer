@@ -32,7 +32,7 @@ RSpec.describe ContactFilesController, type: :controller do
 
         it { is_expected.to have_http_status(:found) }
 
-        it { is_expected.to redirect_to(contact_files_path) }
+        it { is_expected.to redirect_to(new_contact_file_import_path(ContactFile.last)) }
 
         it { expect{ req }.to change(user.contact_files, :count).by(1) }
       end

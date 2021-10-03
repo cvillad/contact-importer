@@ -14,6 +14,7 @@
     <tr>
       <th scope="col">Filename</th>
       <th scope="col">Headers</th>
+      <th scope="col">Uploaded at</th>
       <th scope="col">Status</th>
       <th scope="col"></th>
     </tr>
@@ -22,7 +23,8 @@
     <% @contact_files.each do |file| %>
       <tr>
         <td> <%= file.filename %> </td>
-        <td> <%= file.headers %> <td>
+        <td> <%= "#{time_ago_in_words file.created_at} ago" %> </td>
+        <td> <%= file.headers %> </td>
         <td> <%= file.status.humanize %> </td>
         <td>
           <%= link_to 'Import', new_contact_file_import_path(file), class: 'btn btn-sm btn-primary' %> 

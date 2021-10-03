@@ -11,7 +11,7 @@ class ContactFilesController < ApplicationController
       @contact_file = current_user.contact_files.build(contact_file_params)
       result = ContactFiles::Create.call(@contact_file)
       if result.success?
-        redirect_to contact_files_path, notice: 'File uploaded successfully!'
+        redirect_to new_contact_file_import_path(@contact_file), notice: 'File uploaded successfully!'
       else
         redirect_to contact_files_path, alert: result.error
       end
