@@ -4,10 +4,11 @@ Contact importer through csv files
 
 To run this project you only need to follow the next steps:
 
-1. rails db:create db:migrate
-2. rails s
+1. bundle install
+2. rails db:create db:migrate
+3. rails s
 
-You can run the test with the 'rspec' comand
+You can run the test with the 'rspec' command
 
 CSV files for testing are located on spec/fixtures
 
