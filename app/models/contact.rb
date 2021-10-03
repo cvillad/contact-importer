@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
   require 'credit_card_validations/string'
+  include CreditCardMethods
 
   PHONE_REGEX = /\A\(\+\d{2}\) \d{3}([- ])\d{3}\1\d{2}\1\d{2}\z/.freeze
   NAME_REGEX = /\A[a-zA-Z0-9 -]*\z/.freeze
@@ -23,21 +24,4 @@ class Contact < ApplicationRecord
   after_initialize { status = :succeeded if new_record? }
 
   before_save :save_credit_card
-
-  private
-  def save_credit_card
-    self.franchise = credit_card_franchise
-    self.credit_card_last_4 = credit_card.try(:last, 4)
-    self.credit_card = credit_card_digest
-  end
-
-  def credit_card_digest
-    Digest::SHA2.hexdigest(credit_card)
-  rescue
-    credit_card
-  end
-
-  def credit_card_franchise
-    credit_card&.credit_card_brand_name || 'Invalid franchise'
-  end
 end
