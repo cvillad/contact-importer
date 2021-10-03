@@ -8,7 +8,12 @@ class ContactFile < ApplicationRecord
   has_one_attached :file
   has_many :contacts, dependent: :destroy
 
+  validates :headers, presence: true
   validates :file, attached: true, content_type: ['text/csv']
 
   after_initialize { status = :on_hold if new_record? }
+
+  def file_path
+    file.blob.service.name == :local ? ActiveStorage::Blob.service.send(:path_for, file.blob.key) : file.service_url
+  end
 end
