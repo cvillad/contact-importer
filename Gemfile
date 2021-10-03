@@ -29,7 +29,8 @@ gem 'credit_card_validations'
 gem 'active_storage_validations'
 # For importing records
 gem 'activerecord-import'
-
+#f For background jobs
+gem 'sidekiq', '~> 6.1.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -5,12 +5,9 @@ module ContactFiles
     def new; end
 
     def create
-      res = ContactFiles::Import.call(@contact_file, import_params)
-      if res.success?
-        redirect_to contacts_path, notice: 'File processed!'
-      else
-        redirect_to contacts_path, notice: res.error
-      end
+      CsvImportJob.perform_later(contact_file_id: @contact_file.id, matched_headers: import_params)
+      @contact_file.processing!
+      redirect_to contact_files_path, notice: 'Your file is being processed...'
     end
 
     private

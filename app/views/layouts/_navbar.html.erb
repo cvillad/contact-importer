@@ -7,13 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <%= link_to 'Contact files', contact_files_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Contacts', contacts_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Contact files', contact_files_path, class: 'nav-link' %>
         </li>
       </ul>
     </div>
