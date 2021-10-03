@@ -11,7 +11,8 @@ module ContactFiles
 
     def call
       valid_contacts, invalid_contacts = [], []
-      CSV.foreach contact_file.file_path, headers: true do |row|
+      table = CSV.parse(contact_file.file.download, headers:  true)
+      table.each do |row|
         contact = contact_file.contacts.build(
           email: row[matched_headers[:email]],
           name: row[matched_headers[:name]],
