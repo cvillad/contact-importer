@@ -14,6 +14,6 @@ class ContactFile < ApplicationRecord
   after_initialize { status = :on_hold if new_record? }
 
   def file_path
-    file.blob.service.name == :local ? ActiveStorage::Blob.service.send(:path_for, file.blob.key) : file.service_url
+    file.blob.service.name == :local || file.blob.service.name == :test ? ActiveStorage::Blob.service.send(:path_for, file.blob.key) : file.service_url
   end
 end

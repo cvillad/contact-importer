@@ -13,6 +13,7 @@ class CsvImportJob < ApplicationJob
       end
     else
       contact_file.failed!
+      puts "Error on sidekiq job: #{result.error}"
     end
   end
 end
