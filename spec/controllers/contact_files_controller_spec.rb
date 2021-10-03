@@ -20,7 +20,7 @@ RSpec.describe ContactFilesController, type: :controller do
   describe '#create' do
     subject(:req) { post :create, params: params }
 
-    let(:params) { { contact_file: { file: nil } } }
+    let(:params) { nil }
 
     context 'user signed in' do
       include_context 'sign in user'

@@ -7,7 +7,7 @@ class ContactFilesController < ApplicationController
   end
 
   def create
-    if contact_file_params[:file].present?
+    if params[:contact_file].present?
       @contact_file = current_user.contact_files.build(contact_file_params)
       result = ContactFiles::Create.call(@contact_file)
       if result.success?
