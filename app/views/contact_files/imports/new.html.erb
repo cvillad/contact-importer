@@ -1,0 +1,17 @@
+<h3>Select headers</h3>
+<p>Match csv headers with your contact fields</p>
+<%= form_for :import, url: contact_file_import_path do |f|  %>
+  <% contact_headers.each_with_index do |header, i| %>
+    <div class='row g-2 align-items-center mb-2'>
+      <div class='col-auto' >
+        <%= f.label header.to_sym, nil, class: 'form-label' %>
+      </div>
+      <div class='col-auto'>
+        <%= f.select header.to_sym, options_for_select(@contact_file.headers, @contact_file.headers[i]), class: 'form-select' %>
+      </div>
+    </div>
+  <% end %>
+  <div class='mb-3'>
+    <%= submit_tag 'Import contacts', class: 'btn btn-primary' %>      
+  </div>
+<% end %>

@@ -25,7 +25,7 @@
         <td> <%= file.headers %> <td>
         <td> <%= file.status.humanize %> </td>
         <td>
-          <%= link_to 'Import', '#', class: 'btn btn-sm btn-primary' %> 
+          <%= link_to 'Import', new_contact_file_import_path(file), class: 'btn btn-sm btn-primary' %> 
           <%= link_to 'Delete', contact_file_path(file), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %> 
         </td>
       </tr>

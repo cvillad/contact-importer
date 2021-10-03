@@ -2,14 +2,14 @@ class ContactFilesController < ApplicationController
   before_action :set_contact_file, only: :destroy
 
   def index
-    @contact_files = current_user.contact_files
+    @contact_files = current_user.contact_files.order(created_at: :desc)
     @contact_file = ContactFile.new
   end
 
   def create
     if contact_file_params[:file].present?
       @contact_file = current_user.contact_files.build(contact_file_params)
-      result = ContactFileHandler.call(@contact_file)
+      result = ContactFiles::Create.call(@contact_file)
       if result.success?
         redirect_to contact_files_path, notice: 'File uploaded successfully!'
       else

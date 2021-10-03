@@ -27,6 +27,8 @@ gem 'devise'
 gem 'credit_card_validations'
 # Validations for attached files
 gem 'active_storage_validations'
+# For importing records
+gem 'activerecord-import'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
