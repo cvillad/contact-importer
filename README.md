@@ -9,6 +9,8 @@ To run this project you only need to follow the next steps:
 
 You can run the test with the 'rspec' comand
 
+CSV files for testing are located on spec/fixtures
+
 Development environment runs the background jobs with the default queue adapter (not sidekiq) and local disk storage
 
 Droduction environment uses sidekiq and an S3 bucket, you can test the app with the following data:
