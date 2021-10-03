@@ -59,5 +59,9 @@ group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
 
+group :production do
+  gem 'aws-sdk-s3', require: false
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
