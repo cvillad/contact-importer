@@ -13,7 +13,7 @@ CSV files for testing are located on spec/fixtures
 
 Development environment runs the background jobs with the default queue adapter (not sidekiq) and local disk storage
 
-Droduction environment uses sidekiq and an S3 bucket, you can test the app with the following data:
+Production environment uses sidekiq and an S3 bucket, you can test the app with the following data:
 * url: https://contact-importer-21.herokuapp.com/
 * email: user@example.com
 * password: password
